@@ -10,9 +10,8 @@ mhdzr@ubuntu:~$ sudo apt-get install libncurses5-dev qemu-system-arm gcc-arm-lin
 To get Linux kernel visit:
 *  [Linux kernel](https://www.kernel.org/).
 At the moment to write this turorial the stable version is 5.3.1.
-For busy box visit: 
 *  [Busybox](https://busybox.net/).
-At the momento to write ths tutorial the stavle vesion is 1.29.3.
+At the moment to write thiis tutorial the stable vesion is 1.29.3.
 
 After get the files, unpack the content of both files in a common foler. For this tutorial the repository name is *Compiling-Linux-kernel-with-Busybox*. 
 
@@ -39,7 +38,8 @@ mhdzr@ubuntu:~$ make 0=$BUILDDIR/obj/busybox-arm ARCH=arm CROSS_COMPILE=arm-linu
 * `defconfig`. The configuration to use; for this case default. You can list de full list of defconfigs using `make ARCH=arm help | grep defconfig`. For more information about defconfig visit [What exactly does Linux kernel's make defconfig do?](https://stackoverflow.com/questions/41885015/what-exactly-does-linux-kernels-make-defconfig-do/41886394).
 
 ---
-** NOTE: **
+**NOTE:**
+
 There are other ways to generate the compiler like [crosstool-ng](https://crosstool-ng.github.io/). To install it, follow the instruction to fill the [requirements](https://crosstool-ng.github.io/docs/os-setup/) and  follow the instruction to [build and install](https://crosstool-ng.github.io/docs/install/) crosstool-ng from source. When it is already installed, the tool provides you with a set of pre-configured toolchains that you can list using: 
 
 ```
@@ -68,11 +68,11 @@ The command will start a menu. In the menu, select **Busybox Settings**->**Build
 To start the compilation type the following commands: 
 
 ```
-mhdzr@ubuntu:~$ $BUILDDIR/obj/busybox-arm
+mhdzr@ubuntu:~$ cd $BUILDDIR/obj/busybox-arm
 mhdzr@ubuntu:~$ make -j2 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
 ```
 ---
-** NOTE: **
+**NOTE:**
 
 If you get the error: 
 
@@ -88,7 +88,7 @@ mhdzr@ubuntu:~$ find . -name "*.config"
 ./busybox-1.29.3/.config
 ./build/obj/busybox-arm/.config
 mhdzr@ubuntu:~$ rm ./busybox-1.29.3/.config ./build/obj/busybox-arm/.config
-mhdzr@ubuntu:~$ make O=$TOP/obj/busybox-arm ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
+mhdzr@ubuntu:~$ make O=$BUILDDIR/obj/busybox-arm ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- menuconfig
 mhdzr@ubuntu:~$ make -j2 ARCH=arm CROSS_COMPILE=arm-linux-gnueabi-
 ```
 
